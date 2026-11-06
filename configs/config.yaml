@@ -1,0 +1,66 @@
+# Global Configuration for AI-Generated Text Detection Benchmark
+# Scale Tiers: 'smoke' (~200 samples, <5 min), 'small' (~5k samples), 'medium' (~20k samples)
+tier: "smoke"
+
+tiers:
+  smoke:
+    sample_size: 200
+    batch_size: 8
+    eval_batch_size: 16
+    epochs: 1
+    logging_steps: 10
+    save_steps: 50
+    chunk_size: 50
+  small:
+    sample_size: 5000
+    batch_size: 16
+    eval_batch_size: 32
+    epochs: 2
+    logging_steps: 50
+    save_steps: 250
+    chunk_size: 250
+  medium:
+    sample_size: 20000
+    batch_size: 32
+    eval_batch_size: 64
+    epochs: 3
+    logging_steps: 100
+    save_steps: 500
+    chunk_size: 500
+
+# Open-source default backbones (small by default to ensure Colab T4 / CPU fit)
+models:
+  # Detector: RoBERTa-based or DeBERTa-based small sequence classifier
+  detector_backbone: "distilbert/distilroberta-base"
+  # Alternative lightweight detectors: "microsoft/deberta-v3-small"
+
+  # Generator (for synthetic text generation / calibration)
+  generator_backbone: "gpt2"
+  # Alternative small generators: "distilgpt2", "Qwen/Qwen2.5-0.5B"
+
+  # Paraphraser (for robustness attacks)
+  paraphrase_backbone: "humarin/chatgpt_paraphraser_on_T5_base"
+  # Alternative lightweight paraphrasers: "Vamsi/T5_Paraphrase_Paws"
+
+hyperparameters:
+  max_len: 256
+  learning_rate: 3.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  fp16: true
+  bf16: false
+  load_in_8bit: false
+  load_in_4bit: false
+
+runtime:
+  seed: 42
+  time_limit_hours: 11.0
+  heartbeat_interval_sec: 120
+  force_cpu: false
+
+paths:
+  drive_dir: "./outputs"
+  cache_dir: "./outputs/cache"
+  data_dir: "./outputs/data"
+  checkpoints_dir: "./outputs/checkpoints"
+  results_dir: "./outputs/results"

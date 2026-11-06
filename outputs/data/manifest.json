@@ -1,0 +1,51 @@
+{
+  "total_samples": 200,
+  "columns": [
+    "id",
+    "text",
+    "label",
+    "domain",
+    "generator",
+    "attack",
+    "language",
+    "source_dataset"
+  ],
+  "domains": [
+    "academic",
+    "creative",
+    "news",
+    "reviews"
+  ],
+  "generators": [
+    "gpt2",
+    "human",
+    "llama3",
+    "qwen"
+  ],
+  "attacks": [
+    "none",
+    "paraphrase"
+  ],
+  "holdout_domain": "reviews",
+  "holdout_generator": "qwen",
+  "split_counts": {
+    "train": 142,
+    "val": 32,
+    "test": 26,
+    "lodo_train": 149,
+    "lodo_test": 51,
+    "logo_train": 167,
+    "logo_test": 33
+  },
+  "parquet_paths": {
+    "train": "C:\\Users\\arghy\\Desktop\\bada_data\\outputs\\data\\train.parquet",
+    "val": "C:\\Users\\arghy\\Desktop\\bada_data\\outputs\\data\\val.parquet",
+    "test": "C:\\Users\\arghy\\Desktop\\bada_data\\outputs\\data\\test.parquet",
+    "lodo_train": "C:\\Users\\arghy\\Desktop\\bada_data\\outputs\\data\\lodo_train.parquet",
+    "lodo_test": "C:\\Users\\arghy\\Desktop\\bada_data\\outputs\\data\\lodo_test.parquet",
+    "logo_train": "C:\\Users\\arghy\\Desktop\\bada_data\\outputs\\data\\logo_train.parquet",
+    "logo_test": "C:\\Users\\arghy\\Desktop\\bada_data\\outputs\\data\\logo_test.parquet"
+  },
+  "plot_path": "C:\\Users\\arghy\\Desktop\\bada_data\\outputs\\data\\domain_class_dist.png",
+  "seed": 42
+}
